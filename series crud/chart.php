@@ -22,23 +22,31 @@ while ($row = mysqli_fetch_assoc($result)) {
 }
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pie Charts</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #121212; /* Dark background */
+            color: #ffffff; /* Light text color */
             text-align: center;
+            margin: 20px;
         }
         .chart-container {
-            width: 40%;
-            float: left;
-            margin: 2rem;
+            width: 50%;
+            margin: 20px auto;
+            background: #1e1e1e; /* Darker container background */
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
         }
         h2 {
-            margin-bottom: 1rem;
+            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -46,13 +54,13 @@ while ($row = mysqli_fetch_assoc($result)) {
 
     <!-- Gender Chart -->
     <div class="chart-container">
-        <h2>Gender: </h2>
+        <h2>Gender Distribution</h2>
         <canvas id="genderChart"></canvas>
     </div>
 
     <!-- Place Chart -->
     <div class="chart-container">
-        <h2>Place: </h2>
+        <h2>Place Distribution</h2>
         <canvas id="placeChart"></canvas>
     </div>
 
@@ -80,21 +88,18 @@ while ($row = mysqli_fetch_assoc($result)) {
                             const percentage = ((Number(value) / total) * 100);
                             return percentage.toFixed(1) + "%";
                         },
-                        color: '#000',  // Text color for the labels
+                        color: '#ffffff',  // White text color for the labels
                         font: {
                             weight: 'bold',
-                            size: 14
-                        },
-                        // Position the labels outside of the pie chart
-                        align: 'start',
-                        anchor: 'end',
-                        offset: 20  // Move the labels outside the pie
+                            size: 12
+                        }
                     },
                     legend: {
-                        position: 'right',  // Position the legend to the right of the pie
+                        position: 'top',
                         labels: {
+                            color: '#ffffff', // White text color for legend
                             font: {
-                                size: 14
+                                size: 12
                             }
                         }
                     }
@@ -110,7 +115,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                 labels: <?php echo json_encode($placeLabels); ?>,
                 datasets: [{
                     data: <?php echo json_encode($placeCounts); ?>,
-                    backgroundColor: ['blue', 'red', 'green', 'yellow', 'violet']
+                    backgroundColor: ['#4caf50', '#2196f3', '#ff9800', '#f44336', '#9c27b0']
                 }]
             },
             options: {
@@ -123,21 +128,18 @@ while ($row = mysqli_fetch_assoc($result)) {
                             const percentage = ((Number(value) / total) * 100);
                             return percentage.toFixed(1) + "%";
                         },
-                        color: '#000',  // Text color for the labels
+                        color: '#ffffff',  // White text color for the labels
                         font: {
                             weight: 'bold',
-                            size: 14
-                        },
-                        // Position the labels outside of the pie chart
-                        align: 'start',
-                        anchor: 'end',
-                        offset: 20  // Move the labels outside the pie
+                            size: 12
+                        }
                     },
                     legend: {
-                        position: 'right',  // Position the legend to the right of the pie
+                        position: 'top',
                         labels: {
+                            color: '#ffffff', // White text color for legend
                             font: {
-                                size: 14
+                                size: 12
                             }
                         }
                     }
