@@ -112,7 +112,7 @@ while($row=mysqli_fetch_assoc($result)){
 </table>
       <center>
         <a name="search"href= "search.php"class="btn btn-primary my-3">Search</a> 
-         <a name="add" href="index.php" class = "btn btn-danger my-3" >Add New</a>
+         <a name="add" href="index.php" class = "btn btn-success my-3" >Add New</a>
           <a name="chart" href="chart.php" class = "btn btn-warning my-3" >Chart</a>
       </center>
     </div>
